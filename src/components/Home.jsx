@@ -4,14 +4,17 @@ import Menu from "./Menu";
 import BookContainer from "./BookContainer";
 import NotesContainer from "./NotesContainer";
 
-const API_KEY = "995635c163b6487a5ecfaca7f83aae83";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const Home = () => {
     const [weatherData, setWeatherData] = useState(null);
 
     const fetchWeatherApi = async (place) => {
         try {
-            const API = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${API_KEY}&units=metric`;
+          
+       
+            const API = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${API_KEY}`;
+            
             const response = await fetch(API);
             if (!response.ok) throw new Error(`API xatolik: ${response.status}`);
 
